@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import StackScreens from './screens/StackScreen';
 import DrawerContent from './screens/DrawerContent';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 export default function App() {
 
@@ -11,14 +13,16 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        drawerType="back"
-        drawerContent={props => <DrawerContent {...props} />}
+      <Provider store={store}>
+        <Drawer.Navigator
+          initialRouteName="Home"
+          drawerType="back"
+          drawerContent={props => <DrawerContent {...props} />}
 
-      >
-        <Drawer.Screen name="Home" component={StackScreens} />
-      </Drawer.Navigator>
+        >
+          <Drawer.Screen name="Home" component={StackScreens} />
+        </Drawer.Navigator>
+      </Provider>
     </NavigationContainer>
   );
 }
