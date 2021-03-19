@@ -37,13 +37,11 @@ const HomeScreen = ({ navigation }) => {
         } else {
             dispatch(getData());
         }
-        if (loadingCreate) {
-            if (!success) {
-                Alert.alert("User does not exist", "Kindly add new user from the side bar menu")
-            }
+        if (errorCreate) {
+            Alert.alert("User does not exist", "Kindly add new user from the side bar menu")
         }
 
-    }, [loadingCreate, loadingDelete, loadingUser, loadingCreate]);
+    }, [loadingCreate, loadingDelete, loadingUser]);
 
     const createTodo = (todo, status) => dispatch(createData(dataUser ? dataUser.id : 1262, todo, status));
 

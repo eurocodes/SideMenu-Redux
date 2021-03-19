@@ -34,7 +34,7 @@ const createData = (userid, todo, status) => async (dispatch) => {
                 completed: status,
             })
         });
-        const data = await response.json();
+        const { data } = await response.json();
         console.log(data)
         dispatch({ type: CREATE_DATA_SUCCESS, payload: data, success: true });
     } catch (error) {
